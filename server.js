@@ -3,12 +3,9 @@ import cors from "cors";
 import mongoose from "mongoose";
 import multer from "multer";
 import path from "path";
-<<<<<<< HEAD
 import dotenv from "dotenv";
 
 dotenv.config();
-=======
->>>>>>> c6847d936b2cc04b44a2ebf7033b44ced2e39364
 
 // Controllers
 import { createSlideimage, GetAllSlideimage, DeleteSlideimageById, UpdateSlideimage } from "./controller/slideimage.controller.js";

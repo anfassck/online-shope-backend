@@ -5,13 +5,8 @@ export const CreateProduct = async (req, res) => {
   try {
     const { name, price, category, description } = req.body;
 
-<<<<<<< HEAD
     if (!name || !price || !category || !description) {
       return res.status(400).send("Name, Price, Category & Description are required!");
-=======
-    if (!name || !category || !description) {
-      return res.status(400).send("Name, Category & Description are required!");
->>>>>>> c6847d936b2cc04b44a2ebf7033b44ced2e39364
     }
 
     const image = req.file ? `http://localhost:8080/uploads/${req.file.filename}` : "";
@@ -21,11 +16,7 @@ export const CreateProduct = async (req, res) => {
     res.send("New product added successfully!");
   } catch (err) {
     console.error(err);
-<<<<<<< HEAD
     res.status(500).send("Error adding product: " + err.message);
-=======
-    res.status(500).send("Error adding product");
->>>>>>> c6847d936b2cc04b44a2ebf7033b44ced2e39364
   }
 };
 
@@ -54,30 +45,6 @@ export const UpdateProduct = async (req, res) => {
   }
 };
 
-// 🔹 Update Product
-export const UpdateProduct = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { name, price, category, description } = req.body;
-    
-    // Find the product first
-    const existingProduct = await product.findById(id);
-    if (!existingProduct) return res.status(404).send("Product not found");
-
-    const updateData = { name, price, category, description };
-    
-    // If there's a new file uploaded, update image. Otherwise keep old.
-    if (req.file) {
-      updateData.image = `http://localhost:8080/uploads/${req.file.filename}`;
-    }
-
-    const updated = await product.findByIdAndUpdate(id, updateData, { new: true });
-    res.status(200).json({ message: "Product updated successfully", product: updated });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error updating product");
-  }
-};
 
 // 🔹 Get All Products
 export const GetAllProducts = async (req, res) => {
