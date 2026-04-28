@@ -3,6 +3,9 @@ import cors from "cors";
 import mongoose from "mongoose";
 import multer from "multer";
 import path from "path";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // Controllers
 import { createSlideimage, GetAllSlideimage, DeleteSlideimageById, UpdateSlideimage } from "./controller/slideimage.controller.js";
@@ -14,7 +17,7 @@ import { createOrder, getAllOrder, updateOrderStatus } from "./controller/order.
 
 // ------------------ DATABASE CONNECTION ------------------
 mongoose.connect(
-  "mongodb+srv://muhammedanfasck07_db_user:xiAe5XHGRZJWfz3Y@cluster0.jxtat5d.mongodb.net/ecom"
+  process.env.MONGODB_URI
 )
 .then(() => console.log("Database connected"))
 .catch(err => console.log("Database connection error:", err));
