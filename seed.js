@@ -2,8 +2,10 @@
 // Run: node seed.js  (from backent/ folder)
 
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
-const CONN = "mongodb+srv://muhammedanfasck07_db_user:xiAe5XHGRZJWfz3Y@cluster0.jxtat5d.mongodb.net/ecom";
+const CONN = process.env.MONGODB_URI;
 
 const CategorySchema = new mongoose.Schema({ name: String, image: String }, { timestamps: true });
 const ProductSchema = new mongoose.Schema({

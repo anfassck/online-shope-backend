@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 import User from "./models/user.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 // Database Connection
-mongoose.connect("mongodb+srv://muhammedanfasck07_db_user:xiAe5XHGRZJWfz3Y@cluster0.jxtat5d.mongodb.net/ecom")
+mongoose.connect(process.env.MONGODB_URI)
   .then(async () => {
     console.log("Database connected");
 
