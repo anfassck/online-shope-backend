@@ -19,7 +19,18 @@ import { createOrder, getAllOrder, updateOrderStatus } from "./controller/order.
 mongoose.connect(
   process.env.MONGODB_URI
 )
-.then(() => console.log("Database connected"))
+.then(async () => {
+  console.log("Database connected");
+  try {
+    const collections = await mongoose.connection.db.listCollections({ name: "users" }).toArray();
+    if (collections.length > 0) {
+      await mongoose.connection.db.collection("users").dropIndex("username_1");
+      console.log("Dropped obsolete unique index: username_1");
+    }
+  } catch (err) {
+    console.log("Note: username_1 index does not exist or was already dropped.");
+  }
+})
 .catch(err => console.log("Database connection error:", err));
 
 // ------------------ EXPRESS SETUP ------------------
