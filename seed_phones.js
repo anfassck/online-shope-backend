@@ -18,7 +18,7 @@ async function seed() {
     fd.append("description", p.description);
 
     try {
-      const res = await fetch("http://localhost:8080/product", {
+      const res = await fetch("https://ceekeyapi.anfassck.online/product", {
         method: "POST",
         body: fd
       });

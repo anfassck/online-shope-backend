@@ -9,7 +9,7 @@ export const CreateProduct = async (req, res) => {
       return res.status(400).send("Name, Price, Category & Description are required!");
     }
 
-    const image = req.file ? `http://localhost:8080/uploads/${req.file.filename}` : "";
+    const image = req.file ? `https://ceekeyapi.anfassck.online/uploads/${req.file.filename}` : "";
 
     await product.create({ name, price, image, category, description });
 
@@ -34,7 +34,7 @@ export const UpdateProduct = async (req, res) => {
     
     // If there's a new file uploaded, update image. Otherwise keep old.
     if (req.file) {
-      updateData.image = `http://localhost:8080/uploads/${req.file.filename}`;
+      updateData.image = `https://ceekeyapi.anfassck.online/uploads/${req.file.filename}`;
     }
 
     const updated = await product.findByIdAndUpdate(id, updateData, { new: true });
